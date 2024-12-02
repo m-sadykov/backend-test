@@ -28,6 +28,10 @@ app.post("/transaction/process", async (req, res) => {
         const {status, data} = await axios.post(`${process.env.API_BASE_URL}/dev/card/process`, body)
 
         res.status(status).send(data)
+
+        // res.setHeader('location', data.acs.url);
+        // res.statusCode = 302;
+        // res.end();
     } catch (error) {
         console.error(error)
         res.status(500).send({message: "Internal Server Error"})
@@ -38,7 +42,7 @@ app.post("/transaction/process", async (req, res) => {
 app.post("/transaction/status", async (req, res) => {
     try {
         const body = req.body
-        body.signature = createRequestSignature(data)
+        body.signature = createRequestSignature(body)
 
         const {status, data} = await axios.post(`${process.env.API_BASE_URL}/dev/transaction/status`, body)
 
