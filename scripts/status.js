@@ -5,7 +5,7 @@ const {createRequestSignature} = require("../util/util")
 
 const getStatus = async () => {
     const trxId = "1"
-    const date = format(new Date(1733164202 * 1000), "yyyy-MM-dd")
+    const date = format(new Date(1733208417 * 1000), "yyyy-MM-dd")
 
     const res = await axios.get(`https://aliumpay.com/api/status/merchant?id=${trxId}&date=${date}`, {
         headers: {
